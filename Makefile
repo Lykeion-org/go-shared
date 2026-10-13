@@ -20,4 +20,5 @@ gen-proto:
 		$(PROTO_DIR)/krites/*.proto \
 		$(PROTO_DIR)/lexora/*.proto  \
 		$(PROTO_DIR)/shared/*.proto  \
-		# $(PROTO_DIR)/paideia/*.proto 
+		$(PROTO_DIR)/paideia/*.proto
+ 
