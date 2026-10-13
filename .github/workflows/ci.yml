@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Check go.mod has no local replace
+        run: |
+          if grep -nE '=>[[:space:]]*(\.|/)' go.mod; then
+            echo "::error file=go.mod::go.mod replaces a module with a local path; pin a published version instead"
+            exit 1
+          fi
+      - name: Check go.mod and go.sum are tidy
+        run: go mod tidy -diff
+      - run: go build ./...
+      - run: go vet ./...
+      - run: go test -race ./...
+
+  generated-code:
+    name: generated code matches proto
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: go-shared
+      - uses: actions/checkout@v4
+        with:
+          repository: Lykeion-org/proto
+          path: proto
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go-shared/go.mod
+          cache-dependency-path: go-shared/go.sum
+      - uses: arduino/setup-protoc@v3
+        with:
+          version: "29.3"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install protoc plugins (versions match the generated headers)
+        run: |
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.6
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1
+      - name: Regenerate and diff
+        working-directory: go-shared
+        run: |
+          make gen-proto
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --short
+            echo "::error::pkg/grpc/generated is out of date with Lykeion-org/proto main; run 'make gen-proto' and commit"
+            exit 1
+          fi
