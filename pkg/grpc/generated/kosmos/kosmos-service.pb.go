@@ -683,7 +683,7 @@ var File_kosmos_kosmos_service_proto protoreflect.FileDescriptor
 
 const file_kosmos_kosmos_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bkosmos/kosmos-service.proto\x12\x06kosmos\x1a\x1bshared/language-types.proto\x1a lexora/dictionary-messages.proto\"\x06\n" +
+	"\x1bkosmos/kosmos-service.proto\x12\x06kosmos\x1a\x1bshared/language-types.proto\x1a lexora/dictionary-messages.proto\x1a\x1elexora/analysis-messages.proto\"\x06\n" +
 	"\x04void\"G\n" +
 	"\x13RegisterUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
@@ -731,7 +731,7 @@ const file_kosmos_kosmos_service_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\x12!\n" +
 	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x1b\n" +
 	"\x19GetEnumDefinitionsRequest\"\x1c\n" +
-	"\x1aGetEnumDefinitionsResponse2\x9b\x13\n" +
+	"\x1aGetEnumDefinitionsResponse2\x82\x15\n" +
 	"\rKosmosService\x12I\n" +
 	"\fRegisterUser\x12\x1b.kosmos.RegisterUserRequest\x1a\x1c.kosmos.RegisterUserResponse\x12@\n" +
 	"\tLoginUser\x12\x18.kosmos.LoginUserRequest\x1a\x19.kosmos.LoginUserResponse\x12D\n" +
@@ -768,7 +768,9 @@ const file_kosmos_kosmos_service_proto_rawDesc = "" +
 	"\x18UnlinkSymbolFromReferent\x12'.lexora.UnlinkSymbolFromReferentRequest\x1a(.lexora.UnlinkSymbolFromReferentResponse\x12a\n" +
 	"\x14UnlinkWordFromSymbol\x12#.lexora.UnlinkWordFromSymbolRequest\x1a$.lexora.UnlinkWordFromSymbolResponse\x12g\n" +
 	"\x16ListAllLinkedReferents\x12%.lexora.ListAllLinkedReferentsRequest\x1a&.lexora.ListAllLinkedReferentsResponse\x12a\n" +
-	"\x14ListAllLinkedSymbols\x12#.lexora.ListAllLinkedSymbolsRequest\x1a$.lexora.ListAllLinkedSymbolsResponseBCZAgithub.com/Lykeion-org/go-shared/pkg/grpc/generated/kosmos;kosmosb\x06proto3"
+	"\x14ListAllLinkedSymbols\x12#.lexora.ListAllLinkedSymbolsRequest\x1a$.lexora.ListAllLinkedSymbolsResponse\x12\x7f\n" +
+	"\x1eAnalyzeTextAndAddToSuggestions\x12-.lexora.AnalyzeTextAndAddToSuggestionsRequest\x1a..lexora.AnalyzeTextAndAddToSuggestionsResponse\x12d\n" +
+	"\x15ListAllWordSuggestion\x12$.lexora.ListAllWordSuggestionRequest\x1a%.lexora.ListAllWordSuggestionResponseBCZAgithub.com/Lykeion-org/go-shared/pkg/grpc/generated/kosmos;kosmosb\x06proto3"
 
 var (
 	file_kosmos_kosmos_service_proto_rawDescOnce sync.Once
@@ -784,55 +786,59 @@ func file_kosmos_kosmos_service_proto_rawDescGZIP() []byte {
 
 var file_kosmos_kosmos_service_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_kosmos_kosmos_service_proto_goTypes = []any{
-	(*Void)(nil),                                    // 0: kosmos.void
-	(*RegisterUserRequest)(nil),                     // 1: kosmos.RegisterUserRequest
-	(*RegisterUserResponse)(nil),                    // 2: kosmos.RegisterUserResponse
-	(*LoginUserRequest)(nil),                        // 3: kosmos.LoginUserRequest
-	(*LoginUserResponse)(nil),                       // 4: kosmos.LoginUserResponse
-	(*GetUserClaimsResponse)(nil),                   // 5: kosmos.GetUserClaimsResponse
-	(*GetUserInfoRequest)(nil),                      // 6: kosmos.GetUserInfoRequest
-	(*GetUserInfoResonse)(nil),                      // 7: kosmos.GetUserInfoResonse
-	(*RequestToken)(nil),                            // 8: kosmos.RequestToken
-	(*ConfirmPasswordResetRequest)(nil),             // 9: kosmos.ConfirmPasswordResetRequest
-	(*GetEnumDefinitionsRequest)(nil),               // 10: kosmos.GetEnumDefinitionsRequest
-	(*GetEnumDefinitionsResponse)(nil),              // 11: kosmos.GetEnumDefinitionsResponse
-	(*lexora.GetReferentRequest)(nil),               // 12: lexora.GetReferentRequest
-	(*lexora.GetSymbolRequest)(nil),                 // 13: lexora.GetSymbolRequest
-	(*lexora.GetWordRequest)(nil),                   // 14: lexora.GetWordRequest
-	(*lexora.ListReferentsRequest)(nil),             // 15: lexora.ListReferentsRequest
-	(*lexora.FindReferentsRequest)(nil),             // 16: lexora.FindReferentsRequest
-	(*lexora.CreateReferentRequest)(nil),            // 17: lexora.CreateReferentRequest
-	(*lexora.CreateSymbolRequest)(nil),              // 18: lexora.CreateSymbolRequest
-	(*lexora.CreateWordRequest)(nil),                // 19: lexora.CreateWordRequest
-	(*lexora.CreateWordAttributesRequest)(nil),      // 20: lexora.CreateWordAttributesRequest
-	(*lexora.UpdateReferentRequest)(nil),            // 21: lexora.UpdateReferentRequest
-	(*lexora.UpdateSymbolRequest)(nil),              // 22: lexora.UpdateSymbolRequest
-	(*lexora.UpdateWordRequest)(nil),                // 23: lexora.UpdateWordRequest
-	(*lexora.UpdateWordAttributesRequest)(nil),      // 24: lexora.UpdateWordAttributesRequest
-	(*lexora.DeleteReferentRequest)(nil),            // 25: lexora.DeleteReferentRequest
-	(*lexora.DeleteSymbolRequest)(nil),              // 26: lexora.DeleteSymbolRequest
-	(*lexora.DeleteWordRequest)(nil),                // 27: lexora.DeleteWordRequest
-	(*lexora.DeleteWordAttributesRequest)(nil),      // 28: lexora.DeleteWordAttributesRequest
-	(*lexora.LinkSymbolToReferentRequest)(nil),      // 29: lexora.LinkSymbolToReferentRequest
-	(*lexora.LinkWordToSymbolRequest)(nil),          // 30: lexora.LinkWordToSymbolRequest
-	(*lexora.SetSymbolLemmaRequest)(nil),            // 31: lexora.SetSymbolLemmaRequest
-	(*lexora.UnlinkSymbolFromReferentRequest)(nil),  // 32: lexora.UnlinkSymbolFromReferentRequest
-	(*lexora.UnlinkWordFromSymbolRequest)(nil),      // 33: lexora.UnlinkWordFromSymbolRequest
-	(*lexora.ListAllLinkedReferentsRequest)(nil),    // 34: lexora.ListAllLinkedReferentsRequest
-	(*lexora.ListAllLinkedSymbolsRequest)(nil),      // 35: lexora.ListAllLinkedSymbolsRequest
-	(*shared.Referent)(nil),                         // 36: lexora.Referent
-	(*shared.Symbol)(nil),                           // 37: lexora.Symbol
-	(*shared.Word)(nil),                             // 38: lexora.Word
-	(*lexora.ListReferentsResponse)(nil),            // 39: lexora.ListReferentsResponse
-	(*lexora.FindReferentsResponse)(nil),            // 40: lexora.FindReferentsResponse
-	(*shared.WordAttributes)(nil),                   // 41: lexora.WordAttributes
-	(*lexora.LinkSymbolToReferentResponse)(nil),     // 42: lexora.LinkSymbolToReferentResponse
-	(*lexora.LinkWordToSymbolResponse)(nil),         // 43: lexora.LinkWordToSymbolResponse
-	(*lexora.SetSymbolLemmaResponse)(nil),           // 44: lexora.SetSymbolLemmaResponse
-	(*lexora.UnlinkSymbolFromReferentResponse)(nil), // 45: lexora.UnlinkSymbolFromReferentResponse
-	(*lexora.UnlinkWordFromSymbolResponse)(nil),     // 46: lexora.UnlinkWordFromSymbolResponse
-	(*lexora.ListAllLinkedReferentsResponse)(nil),   // 47: lexora.ListAllLinkedReferentsResponse
-	(*lexora.ListAllLinkedSymbolsResponse)(nil),     // 48: lexora.ListAllLinkedSymbolsResponse
+	(*Void)(nil),                                          // 0: kosmos.void
+	(*RegisterUserRequest)(nil),                           // 1: kosmos.RegisterUserRequest
+	(*RegisterUserResponse)(nil),                          // 2: kosmos.RegisterUserResponse
+	(*LoginUserRequest)(nil),                              // 3: kosmos.LoginUserRequest
+	(*LoginUserResponse)(nil),                             // 4: kosmos.LoginUserResponse
+	(*GetUserClaimsResponse)(nil),                         // 5: kosmos.GetUserClaimsResponse
+	(*GetUserInfoRequest)(nil),                            // 6: kosmos.GetUserInfoRequest
+	(*GetUserInfoResonse)(nil),                            // 7: kosmos.GetUserInfoResonse
+	(*RequestToken)(nil),                                  // 8: kosmos.RequestToken
+	(*ConfirmPasswordResetRequest)(nil),                   // 9: kosmos.ConfirmPasswordResetRequest
+	(*GetEnumDefinitionsRequest)(nil),                     // 10: kosmos.GetEnumDefinitionsRequest
+	(*GetEnumDefinitionsResponse)(nil),                    // 11: kosmos.GetEnumDefinitionsResponse
+	(*lexora.GetReferentRequest)(nil),                     // 12: lexora.GetReferentRequest
+	(*lexora.GetSymbolRequest)(nil),                       // 13: lexora.GetSymbolRequest
+	(*lexora.GetWordRequest)(nil),                         // 14: lexora.GetWordRequest
+	(*lexora.ListReferentsRequest)(nil),                   // 15: lexora.ListReferentsRequest
+	(*lexora.FindReferentsRequest)(nil),                   // 16: lexora.FindReferentsRequest
+	(*lexora.CreateReferentRequest)(nil),                  // 17: lexora.CreateReferentRequest
+	(*lexora.CreateSymbolRequest)(nil),                    // 18: lexora.CreateSymbolRequest
+	(*lexora.CreateWordRequest)(nil),                      // 19: lexora.CreateWordRequest
+	(*lexora.CreateWordAttributesRequest)(nil),            // 20: lexora.CreateWordAttributesRequest
+	(*lexora.UpdateReferentRequest)(nil),                  // 21: lexora.UpdateReferentRequest
+	(*lexora.UpdateSymbolRequest)(nil),                    // 22: lexora.UpdateSymbolRequest
+	(*lexora.UpdateWordRequest)(nil),                      // 23: lexora.UpdateWordRequest
+	(*lexora.UpdateWordAttributesRequest)(nil),            // 24: lexora.UpdateWordAttributesRequest
+	(*lexora.DeleteReferentRequest)(nil),                  // 25: lexora.DeleteReferentRequest
+	(*lexora.DeleteSymbolRequest)(nil),                    // 26: lexora.DeleteSymbolRequest
+	(*lexora.DeleteWordRequest)(nil),                      // 27: lexora.DeleteWordRequest
+	(*lexora.DeleteWordAttributesRequest)(nil),            // 28: lexora.DeleteWordAttributesRequest
+	(*lexora.LinkSymbolToReferentRequest)(nil),            // 29: lexora.LinkSymbolToReferentRequest
+	(*lexora.LinkWordToSymbolRequest)(nil),                // 30: lexora.LinkWordToSymbolRequest
+	(*lexora.SetSymbolLemmaRequest)(nil),                  // 31: lexora.SetSymbolLemmaRequest
+	(*lexora.UnlinkSymbolFromReferentRequest)(nil),        // 32: lexora.UnlinkSymbolFromReferentRequest
+	(*lexora.UnlinkWordFromSymbolRequest)(nil),            // 33: lexora.UnlinkWordFromSymbolRequest
+	(*lexora.ListAllLinkedReferentsRequest)(nil),          // 34: lexora.ListAllLinkedReferentsRequest
+	(*lexora.ListAllLinkedSymbolsRequest)(nil),            // 35: lexora.ListAllLinkedSymbolsRequest
+	(*lexora.AnalyzeTextAndAddToSuggestionsRequest)(nil),  // 36: lexora.AnalyzeTextAndAddToSuggestionsRequest
+	(*lexora.ListAllWordSuggestionRequest)(nil),           // 37: lexora.ListAllWordSuggestionRequest
+	(*shared.Referent)(nil),                               // 38: lexora.Referent
+	(*shared.Symbol)(nil),                                 // 39: lexora.Symbol
+	(*shared.Word)(nil),                                   // 40: lexora.Word
+	(*lexora.ListReferentsResponse)(nil),                  // 41: lexora.ListReferentsResponse
+	(*lexora.FindReferentsResponse)(nil),                  // 42: lexora.FindReferentsResponse
+	(*shared.WordAttributes)(nil),                         // 43: lexora.WordAttributes
+	(*lexora.LinkSymbolToReferentResponse)(nil),           // 44: lexora.LinkSymbolToReferentResponse
+	(*lexora.LinkWordToSymbolResponse)(nil),               // 45: lexora.LinkWordToSymbolResponse
+	(*lexora.SetSymbolLemmaResponse)(nil),                 // 46: lexora.SetSymbolLemmaResponse
+	(*lexora.UnlinkSymbolFromReferentResponse)(nil),       // 47: lexora.UnlinkSymbolFromReferentResponse
+	(*lexora.UnlinkWordFromSymbolResponse)(nil),           // 48: lexora.UnlinkWordFromSymbolResponse
+	(*lexora.ListAllLinkedReferentsResponse)(nil),         // 49: lexora.ListAllLinkedReferentsResponse
+	(*lexora.ListAllLinkedSymbolsResponse)(nil),           // 50: lexora.ListAllLinkedSymbolsResponse
+	(*lexora.AnalyzeTextAndAddToSuggestionsResponse)(nil), // 51: lexora.AnalyzeTextAndAddToSuggestionsResponse
+	(*lexora.ListAllWordSuggestionResponse)(nil),          // 52: lexora.ListAllWordSuggestionResponse
 }
 var file_kosmos_kosmos_service_proto_depIdxs = []int32{
 	1,  // 0: kosmos.KosmosService.RegisterUser:input_type -> kosmos.RegisterUserRequest
@@ -868,41 +874,45 @@ var file_kosmos_kosmos_service_proto_depIdxs = []int32{
 	33, // 30: kosmos.KosmosService.UnlinkWordFromSymbol:input_type -> lexora.UnlinkWordFromSymbolRequest
 	34, // 31: kosmos.KosmosService.ListAllLinkedReferents:input_type -> lexora.ListAllLinkedReferentsRequest
 	35, // 32: kosmos.KosmosService.ListAllLinkedSymbols:input_type -> lexora.ListAllLinkedSymbolsRequest
-	2,  // 33: kosmos.KosmosService.RegisterUser:output_type -> kosmos.RegisterUserResponse
-	4,  // 34: kosmos.KosmosService.LoginUser:output_type -> kosmos.LoginUserResponse
-	5,  // 35: kosmos.KosmosService.GetUserClaims:output_type -> kosmos.GetUserClaimsResponse
-	7,  // 36: kosmos.KosmosService.GetUserInfo:output_type -> kosmos.GetUserInfoResonse
-	0,  // 37: kosmos.KosmosService.RequestPasswordReset:output_type -> kosmos.void
-	0,  // 38: kosmos.KosmosService.RequestEmailVerification:output_type -> kosmos.void
-	0,  // 39: kosmos.KosmosService.ConfirmPasswordReset:output_type -> kosmos.void
-	0,  // 40: kosmos.KosmosService.ConfirmEmailVerification:output_type -> kosmos.void
-	11, // 41: kosmos.KosmosService.GetEnumDefinitions:output_type -> kosmos.GetEnumDefinitionsResponse
-	36, // 42: kosmos.KosmosService.GetReferent:output_type -> lexora.Referent
-	37, // 43: kosmos.KosmosService.GetSymbol:output_type -> lexora.Symbol
-	38, // 44: kosmos.KosmosService.GetWord:output_type -> lexora.Word
-	39, // 45: kosmos.KosmosService.ListReferents:output_type -> lexora.ListReferentsResponse
-	40, // 46: kosmos.KosmosService.FindReferents:output_type -> lexora.FindReferentsResponse
-	36, // 47: kosmos.KosmosService.CreateReferent:output_type -> lexora.Referent
-	37, // 48: kosmos.KosmosService.CreateSymbol:output_type -> lexora.Symbol
-	38, // 49: kosmos.KosmosService.CreateWord:output_type -> lexora.Word
-	41, // 50: kosmos.KosmosService.CreateWordAttributes:output_type -> lexora.WordAttributes
-	36, // 51: kosmos.KosmosService.UpdateReferent:output_type -> lexora.Referent
-	37, // 52: kosmos.KosmosService.UpdateSymbol:output_type -> lexora.Symbol
-	38, // 53: kosmos.KosmosService.UpdateWord:output_type -> lexora.Word
-	41, // 54: kosmos.KosmosService.UpdateWordAttributes:output_type -> lexora.WordAttributes
-	36, // 55: kosmos.KosmosService.DeleteReferent:output_type -> lexora.Referent
-	37, // 56: kosmos.KosmosService.DeleteSymbol:output_type -> lexora.Symbol
-	38, // 57: kosmos.KosmosService.DeleteWord:output_type -> lexora.Word
-	41, // 58: kosmos.KosmosService.DeleteWordAttributes:output_type -> lexora.WordAttributes
-	42, // 59: kosmos.KosmosService.LinkSymbolToReferent:output_type -> lexora.LinkSymbolToReferentResponse
-	43, // 60: kosmos.KosmosService.LinkWordToSymbol:output_type -> lexora.LinkWordToSymbolResponse
-	44, // 61: kosmos.KosmosService.SetSymbolLemma:output_type -> lexora.SetSymbolLemmaResponse
-	45, // 62: kosmos.KosmosService.UnlinkSymbolFromReferent:output_type -> lexora.UnlinkSymbolFromReferentResponse
-	46, // 63: kosmos.KosmosService.UnlinkWordFromSymbol:output_type -> lexora.UnlinkWordFromSymbolResponse
-	47, // 64: kosmos.KosmosService.ListAllLinkedReferents:output_type -> lexora.ListAllLinkedReferentsResponse
-	48, // 65: kosmos.KosmosService.ListAllLinkedSymbols:output_type -> lexora.ListAllLinkedSymbolsResponse
-	33, // [33:66] is the sub-list for method output_type
-	0,  // [0:33] is the sub-list for method input_type
+	36, // 33: kosmos.KosmosService.AnalyzeTextAndAddToSuggestions:input_type -> lexora.AnalyzeTextAndAddToSuggestionsRequest
+	37, // 34: kosmos.KosmosService.ListAllWordSuggestion:input_type -> lexora.ListAllWordSuggestionRequest
+	2,  // 35: kosmos.KosmosService.RegisterUser:output_type -> kosmos.RegisterUserResponse
+	4,  // 36: kosmos.KosmosService.LoginUser:output_type -> kosmos.LoginUserResponse
+	5,  // 37: kosmos.KosmosService.GetUserClaims:output_type -> kosmos.GetUserClaimsResponse
+	7,  // 38: kosmos.KosmosService.GetUserInfo:output_type -> kosmos.GetUserInfoResonse
+	0,  // 39: kosmos.KosmosService.RequestPasswordReset:output_type -> kosmos.void
+	0,  // 40: kosmos.KosmosService.RequestEmailVerification:output_type -> kosmos.void
+	0,  // 41: kosmos.KosmosService.ConfirmPasswordReset:output_type -> kosmos.void
+	0,  // 42: kosmos.KosmosService.ConfirmEmailVerification:output_type -> kosmos.void
+	11, // 43: kosmos.KosmosService.GetEnumDefinitions:output_type -> kosmos.GetEnumDefinitionsResponse
+	38, // 44: kosmos.KosmosService.GetReferent:output_type -> lexora.Referent
+	39, // 45: kosmos.KosmosService.GetSymbol:output_type -> lexora.Symbol
+	40, // 46: kosmos.KosmosService.GetWord:output_type -> lexora.Word
+	41, // 47: kosmos.KosmosService.ListReferents:output_type -> lexora.ListReferentsResponse
+	42, // 48: kosmos.KosmosService.FindReferents:output_type -> lexora.FindReferentsResponse
+	38, // 49: kosmos.KosmosService.CreateReferent:output_type -> lexora.Referent
+	39, // 50: kosmos.KosmosService.CreateSymbol:output_type -> lexora.Symbol
+	40, // 51: kosmos.KosmosService.CreateWord:output_type -> lexora.Word
+	43, // 52: kosmos.KosmosService.CreateWordAttributes:output_type -> lexora.WordAttributes
+	38, // 53: kosmos.KosmosService.UpdateReferent:output_type -> lexora.Referent
+	39, // 54: kosmos.KosmosService.UpdateSymbol:output_type -> lexora.Symbol
+	40, // 55: kosmos.KosmosService.UpdateWord:output_type -> lexora.Word
+	43, // 56: kosmos.KosmosService.UpdateWordAttributes:output_type -> lexora.WordAttributes
+	38, // 57: kosmos.KosmosService.DeleteReferent:output_type -> lexora.Referent
+	39, // 58: kosmos.KosmosService.DeleteSymbol:output_type -> lexora.Symbol
+	40, // 59: kosmos.KosmosService.DeleteWord:output_type -> lexora.Word
+	43, // 60: kosmos.KosmosService.DeleteWordAttributes:output_type -> lexora.WordAttributes
+	44, // 61: kosmos.KosmosService.LinkSymbolToReferent:output_type -> lexora.LinkSymbolToReferentResponse
+	45, // 62: kosmos.KosmosService.LinkWordToSymbol:output_type -> lexora.LinkWordToSymbolResponse
+	46, // 63: kosmos.KosmosService.SetSymbolLemma:output_type -> lexora.SetSymbolLemmaResponse
+	47, // 64: kosmos.KosmosService.UnlinkSymbolFromReferent:output_type -> lexora.UnlinkSymbolFromReferentResponse
+	48, // 65: kosmos.KosmosService.UnlinkWordFromSymbol:output_type -> lexora.UnlinkWordFromSymbolResponse
+	49, // 66: kosmos.KosmosService.ListAllLinkedReferents:output_type -> lexora.ListAllLinkedReferentsResponse
+	50, // 67: kosmos.KosmosService.ListAllLinkedSymbols:output_type -> lexora.ListAllLinkedSymbolsResponse
+	51, // 68: kosmos.KosmosService.AnalyzeTextAndAddToSuggestions:output_type -> lexora.AnalyzeTextAndAddToSuggestionsResponse
+	52, // 69: kosmos.KosmosService.ListAllWordSuggestion:output_type -> lexora.ListAllWordSuggestionResponse
+	35, // [35:70] is the sub-list for method output_type
+	0,  // [0:35] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

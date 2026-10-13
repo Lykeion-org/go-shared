@@ -21,39 +21,41 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	KosmosService_RegisterUser_FullMethodName             = "/kosmos.KosmosService/RegisterUser"
-	KosmosService_LoginUser_FullMethodName                = "/kosmos.KosmosService/LoginUser"
-	KosmosService_GetUserClaims_FullMethodName            = "/kosmos.KosmosService/GetUserClaims"
-	KosmosService_GetUserInfo_FullMethodName              = "/kosmos.KosmosService/GetUserInfo"
-	KosmosService_RequestPasswordReset_FullMethodName     = "/kosmos.KosmosService/RequestPasswordReset"
-	KosmosService_RequestEmailVerification_FullMethodName = "/kosmos.KosmosService/RequestEmailVerification"
-	KosmosService_ConfirmPasswordReset_FullMethodName     = "/kosmos.KosmosService/ConfirmPasswordReset"
-	KosmosService_ConfirmEmailVerification_FullMethodName = "/kosmos.KosmosService/ConfirmEmailVerification"
-	KosmosService_GetEnumDefinitions_FullMethodName       = "/kosmos.KosmosService/GetEnumDefinitions"
-	KosmosService_GetReferent_FullMethodName              = "/kosmos.KosmosService/GetReferent"
-	KosmosService_GetSymbol_FullMethodName                = "/kosmos.KosmosService/GetSymbol"
-	KosmosService_GetWord_FullMethodName                  = "/kosmos.KosmosService/GetWord"
-	KosmosService_ListReferents_FullMethodName            = "/kosmos.KosmosService/ListReferents"
-	KosmosService_FindReferents_FullMethodName            = "/kosmos.KosmosService/FindReferents"
-	KosmosService_CreateReferent_FullMethodName           = "/kosmos.KosmosService/CreateReferent"
-	KosmosService_CreateSymbol_FullMethodName             = "/kosmos.KosmosService/CreateSymbol"
-	KosmosService_CreateWord_FullMethodName               = "/kosmos.KosmosService/CreateWord"
-	KosmosService_CreateWordAttributes_FullMethodName     = "/kosmos.KosmosService/CreateWordAttributes"
-	KosmosService_UpdateReferent_FullMethodName           = "/kosmos.KosmosService/UpdateReferent"
-	KosmosService_UpdateSymbol_FullMethodName             = "/kosmos.KosmosService/UpdateSymbol"
-	KosmosService_UpdateWord_FullMethodName               = "/kosmos.KosmosService/UpdateWord"
-	KosmosService_UpdateWordAttributes_FullMethodName     = "/kosmos.KosmosService/UpdateWordAttributes"
-	KosmosService_DeleteReferent_FullMethodName           = "/kosmos.KosmosService/DeleteReferent"
-	KosmosService_DeleteSymbol_FullMethodName             = "/kosmos.KosmosService/DeleteSymbol"
-	KosmosService_DeleteWord_FullMethodName               = "/kosmos.KosmosService/DeleteWord"
-	KosmosService_DeleteWordAttributes_FullMethodName     = "/kosmos.KosmosService/DeleteWordAttributes"
-	KosmosService_LinkSymbolToReferent_FullMethodName     = "/kosmos.KosmosService/LinkSymbolToReferent"
-	KosmosService_LinkWordToSymbol_FullMethodName         = "/kosmos.KosmosService/LinkWordToSymbol"
-	KosmosService_SetSymbolLemma_FullMethodName           = "/kosmos.KosmosService/SetSymbolLemma"
-	KosmosService_UnlinkSymbolFromReferent_FullMethodName = "/kosmos.KosmosService/UnlinkSymbolFromReferent"
-	KosmosService_UnlinkWordFromSymbol_FullMethodName     = "/kosmos.KosmosService/UnlinkWordFromSymbol"
-	KosmosService_ListAllLinkedReferents_FullMethodName   = "/kosmos.KosmosService/ListAllLinkedReferents"
-	KosmosService_ListAllLinkedSymbols_FullMethodName     = "/kosmos.KosmosService/ListAllLinkedSymbols"
+	KosmosService_RegisterUser_FullMethodName                   = "/kosmos.KosmosService/RegisterUser"
+	KosmosService_LoginUser_FullMethodName                      = "/kosmos.KosmosService/LoginUser"
+	KosmosService_GetUserClaims_FullMethodName                  = "/kosmos.KosmosService/GetUserClaims"
+	KosmosService_GetUserInfo_FullMethodName                    = "/kosmos.KosmosService/GetUserInfo"
+	KosmosService_RequestPasswordReset_FullMethodName           = "/kosmos.KosmosService/RequestPasswordReset"
+	KosmosService_RequestEmailVerification_FullMethodName       = "/kosmos.KosmosService/RequestEmailVerification"
+	KosmosService_ConfirmPasswordReset_FullMethodName           = "/kosmos.KosmosService/ConfirmPasswordReset"
+	KosmosService_ConfirmEmailVerification_FullMethodName       = "/kosmos.KosmosService/ConfirmEmailVerification"
+	KosmosService_GetEnumDefinitions_FullMethodName             = "/kosmos.KosmosService/GetEnumDefinitions"
+	KosmosService_GetReferent_FullMethodName                    = "/kosmos.KosmosService/GetReferent"
+	KosmosService_GetSymbol_FullMethodName                      = "/kosmos.KosmosService/GetSymbol"
+	KosmosService_GetWord_FullMethodName                        = "/kosmos.KosmosService/GetWord"
+	KosmosService_ListReferents_FullMethodName                  = "/kosmos.KosmosService/ListReferents"
+	KosmosService_FindReferents_FullMethodName                  = "/kosmos.KosmosService/FindReferents"
+	KosmosService_CreateReferent_FullMethodName                 = "/kosmos.KosmosService/CreateReferent"
+	KosmosService_CreateSymbol_FullMethodName                   = "/kosmos.KosmosService/CreateSymbol"
+	KosmosService_CreateWord_FullMethodName                     = "/kosmos.KosmosService/CreateWord"
+	KosmosService_CreateWordAttributes_FullMethodName           = "/kosmos.KosmosService/CreateWordAttributes"
+	KosmosService_UpdateReferent_FullMethodName                 = "/kosmos.KosmosService/UpdateReferent"
+	KosmosService_UpdateSymbol_FullMethodName                   = "/kosmos.KosmosService/UpdateSymbol"
+	KosmosService_UpdateWord_FullMethodName                     = "/kosmos.KosmosService/UpdateWord"
+	KosmosService_UpdateWordAttributes_FullMethodName           = "/kosmos.KosmosService/UpdateWordAttributes"
+	KosmosService_DeleteReferent_FullMethodName                 = "/kosmos.KosmosService/DeleteReferent"
+	KosmosService_DeleteSymbol_FullMethodName                   = "/kosmos.KosmosService/DeleteSymbol"
+	KosmosService_DeleteWord_FullMethodName                     = "/kosmos.KosmosService/DeleteWord"
+	KosmosService_DeleteWordAttributes_FullMethodName           = "/kosmos.KosmosService/DeleteWordAttributes"
+	KosmosService_LinkSymbolToReferent_FullMethodName           = "/kosmos.KosmosService/LinkSymbolToReferent"
+	KosmosService_LinkWordToSymbol_FullMethodName               = "/kosmos.KosmosService/LinkWordToSymbol"
+	KosmosService_SetSymbolLemma_FullMethodName                 = "/kosmos.KosmosService/SetSymbolLemma"
+	KosmosService_UnlinkSymbolFromReferent_FullMethodName       = "/kosmos.KosmosService/UnlinkSymbolFromReferent"
+	KosmosService_UnlinkWordFromSymbol_FullMethodName           = "/kosmos.KosmosService/UnlinkWordFromSymbol"
+	KosmosService_ListAllLinkedReferents_FullMethodName         = "/kosmos.KosmosService/ListAllLinkedReferents"
+	KosmosService_ListAllLinkedSymbols_FullMethodName           = "/kosmos.KosmosService/ListAllLinkedSymbols"
+	KosmosService_AnalyzeTextAndAddToSuggestions_FullMethodName = "/kosmos.KosmosService/AnalyzeTextAndAddToSuggestions"
+	KosmosService_ListAllWordSuggestion_FullMethodName          = "/kosmos.KosmosService/ListAllWordSuggestion"
 )
 
 // KosmosServiceClient is the client API for KosmosService service.
@@ -100,6 +102,9 @@ type KosmosServiceClient interface {
 	UnlinkWordFromSymbol(ctx context.Context, in *lexora.UnlinkWordFromSymbolRequest, opts ...grpc.CallOption) (*lexora.UnlinkWordFromSymbolResponse, error)
 	ListAllLinkedReferents(ctx context.Context, in *lexora.ListAllLinkedReferentsRequest, opts ...grpc.CallOption) (*lexora.ListAllLinkedReferentsResponse, error)
 	ListAllLinkedSymbols(ctx context.Context, in *lexora.ListAllLinkedSymbolsRequest, opts ...grpc.CallOption) (*lexora.ListAllLinkedSymbolsResponse, error)
+	// text analysis
+	AnalyzeTextAndAddToSuggestions(ctx context.Context, in *lexora.AnalyzeTextAndAddToSuggestionsRequest, opts ...grpc.CallOption) (*lexora.AnalyzeTextAndAddToSuggestionsResponse, error)
+	ListAllWordSuggestion(ctx context.Context, in *lexora.ListAllWordSuggestionRequest, opts ...grpc.CallOption) (*lexora.ListAllWordSuggestionResponse, error)
 }
 
 type kosmosServiceClient struct {
@@ -440,6 +445,26 @@ func (c *kosmosServiceClient) ListAllLinkedSymbols(ctx context.Context, in *lexo
 	return out, nil
 }
 
+func (c *kosmosServiceClient) AnalyzeTextAndAddToSuggestions(ctx context.Context, in *lexora.AnalyzeTextAndAddToSuggestionsRequest, opts ...grpc.CallOption) (*lexora.AnalyzeTextAndAddToSuggestionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(lexora.AnalyzeTextAndAddToSuggestionsResponse)
+	err := c.cc.Invoke(ctx, KosmosService_AnalyzeTextAndAddToSuggestions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kosmosServiceClient) ListAllWordSuggestion(ctx context.Context, in *lexora.ListAllWordSuggestionRequest, opts ...grpc.CallOption) (*lexora.ListAllWordSuggestionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(lexora.ListAllWordSuggestionResponse)
+	err := c.cc.Invoke(ctx, KosmosService_ListAllWordSuggestion_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // KosmosServiceServer is the server API for KosmosService service.
 // All implementations must embed UnimplementedKosmosServiceServer
 // for forward compatibility.
@@ -484,6 +509,9 @@ type KosmosServiceServer interface {
 	UnlinkWordFromSymbol(context.Context, *lexora.UnlinkWordFromSymbolRequest) (*lexora.UnlinkWordFromSymbolResponse, error)
 	ListAllLinkedReferents(context.Context, *lexora.ListAllLinkedReferentsRequest) (*lexora.ListAllLinkedReferentsResponse, error)
 	ListAllLinkedSymbols(context.Context, *lexora.ListAllLinkedSymbolsRequest) (*lexora.ListAllLinkedSymbolsResponse, error)
+	// text analysis
+	AnalyzeTextAndAddToSuggestions(context.Context, *lexora.AnalyzeTextAndAddToSuggestionsRequest) (*lexora.AnalyzeTextAndAddToSuggestionsResponse, error)
+	ListAllWordSuggestion(context.Context, *lexora.ListAllWordSuggestionRequest) (*lexora.ListAllWordSuggestionResponse, error)
 	mustEmbedUnimplementedKosmosServiceServer()
 }
 
@@ -592,6 +620,12 @@ func (UnimplementedKosmosServiceServer) ListAllLinkedReferents(context.Context, 
 }
 func (UnimplementedKosmosServiceServer) ListAllLinkedSymbols(context.Context, *lexora.ListAllLinkedSymbolsRequest) (*lexora.ListAllLinkedSymbolsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListAllLinkedSymbols not implemented")
+}
+func (UnimplementedKosmosServiceServer) AnalyzeTextAndAddToSuggestions(context.Context, *lexora.AnalyzeTextAndAddToSuggestionsRequest) (*lexora.AnalyzeTextAndAddToSuggestionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AnalyzeTextAndAddToSuggestions not implemented")
+}
+func (UnimplementedKosmosServiceServer) ListAllWordSuggestion(context.Context, *lexora.ListAllWordSuggestionRequest) (*lexora.ListAllWordSuggestionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAllWordSuggestion not implemented")
 }
 func (UnimplementedKosmosServiceServer) mustEmbedUnimplementedKosmosServiceServer() {}
 func (UnimplementedKosmosServiceServer) testEmbeddedByValue()                       {}
@@ -1208,6 +1242,42 @@ func _KosmosService_ListAllLinkedSymbols_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KosmosService_AnalyzeTextAndAddToSuggestions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(lexora.AnalyzeTextAndAddToSuggestionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KosmosServiceServer).AnalyzeTextAndAddToSuggestions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KosmosService_AnalyzeTextAndAddToSuggestions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KosmosServiceServer).AnalyzeTextAndAddToSuggestions(ctx, req.(*lexora.AnalyzeTextAndAddToSuggestionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KosmosService_ListAllWordSuggestion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(lexora.ListAllWordSuggestionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KosmosServiceServer).ListAllWordSuggestion(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KosmosService_ListAllWordSuggestion_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KosmosServiceServer).ListAllWordSuggestion(ctx, req.(*lexora.ListAllWordSuggestionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // KosmosService_ServiceDesc is the grpc.ServiceDesc for KosmosService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1346,6 +1416,14 @@ var KosmosService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListAllLinkedSymbols",
 			Handler:    _KosmosService_ListAllLinkedSymbols_Handler,
+		},
+		{
+			MethodName: "AnalyzeTextAndAddToSuggestions",
+			Handler:    _KosmosService_AnalyzeTextAndAddToSuggestions_Handler,
+		},
+		{
+			MethodName: "ListAllWordSuggestion",
+			Handler:    _KosmosService_ListAllWordSuggestion_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
