@@ -17,6 +17,7 @@ gen-proto:
 		$(PROTO_DIR)/aegis/*.proto \
 		$(PROTO_DIR)/demes/*.proto \
 		$(PROTO_DIR)/kosmos/*.proto \
+		$(PROTO_DIR)/krites/*.proto \
 		$(PROTO_DIR)/lexora/*.proto  \
 		$(PROTO_DIR)/shared/*.proto  \
 		$(PROTO_DIR)/paideia/*.proto
