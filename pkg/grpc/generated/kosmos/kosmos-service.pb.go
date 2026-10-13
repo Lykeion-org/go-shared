@@ -683,7 +683,7 @@ var File_kosmos_kosmos_service_proto protoreflect.FileDescriptor
 
 const file_kosmos_kosmos_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1bkosmos/kosmos-service.proto\x12\x06kosmos\x1a\x1bshared/language-types.proto\x1a lexora/dictionary-messages.proto\x1a\x1clexora/lexora-messages.proto\"\x06\n" +
+	"\x1bkosmos/kosmos-service.proto\x12\x06kosmos\x1a\x1bshared/language-types.proto\x1a lexora/dictionary-messages.proto\"\x06\n" +
 	"\x04void\"G\n" +
 	"\x13RegisterUserRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
