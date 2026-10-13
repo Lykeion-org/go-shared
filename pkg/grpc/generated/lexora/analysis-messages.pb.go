@@ -22,10 +22,13 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Queues a text for the NLP worker. Words it finds that are not in the
+// dictionary yet become word suggestions.
 type AnalyzeTextAndAddToSuggestionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Test          string                 `protobuf:"bytes,1,opt,name=test,proto3" json:"test,omitempty"`
-	Uid           string                 `protobuf:"bytes,2,opt,name=uid,proto3" json:"uid,omitempty"`
+	Text          string                 `protobuf:"bytes,1,opt,name=text,proto3" json:"text,omitempty"`
+	RequesterUid  string                 `protobuf:"bytes,2,opt,name=requester_uid,json=requesterUid,proto3" json:"requester_uid,omitempty"` // filled in by the gateway from the caller's token
+	Language      shared.Language        `protobuf:"varint,3,opt,name=language,proto3,enum=lexora.Language" json:"language,omitempty"`       // only LANGUAGE_EN is analysed for now; unspecified means EN
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -60,18 +63,25 @@ func (*AnalyzeTextAndAddToSuggestionsRequest) Descriptor() ([]byte, []int) {
 	return file_lexora_analysis_messages_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *AnalyzeTextAndAddToSuggestionsRequest) GetTest() string {
+func (x *AnalyzeTextAndAddToSuggestionsRequest) GetText() string {
 	if x != nil {
-		return x.Test
+		return x.Text
 	}
 	return ""
 }
 
-func (x *AnalyzeTextAndAddToSuggestionsRequest) GetUid() string {
+func (x *AnalyzeTextAndAddToSuggestionsRequest) GetRequesterUid() string {
 	if x != nil {
-		return x.Uid
+		return x.RequesterUid
 	}
 	return ""
+}
+
+func (x *AnalyzeTextAndAddToSuggestionsRequest) GetLanguage() shared.Language {
+	if x != nil {
+		return x.Language
+	}
+	return shared.Language(0)
 }
 
 type AnalyzeTextAndAddToSuggestionsResponse struct {
@@ -234,10 +244,11 @@ var File_lexora_analysis_messages_proto protoreflect.FileDescriptor
 
 const file_lexora_analysis_messages_proto_rawDesc = "" +
 	"\n" +
-	"\x1elexora/analysis-messages.proto\x12\x06lexora\x1a\x1bshared/language-types.proto\"M\n" +
+	"\x1elexora/analysis-messages.proto\x12\x06lexora\x1a\x1bshared/language-types.proto\"\x8e\x01\n" +
 	"%AnalyzeTextAndAddToSuggestionsRequest\x12\x12\n" +
-	"\x04test\x18\x01 \x01(\tR\x04test\x12\x10\n" +
-	"\x03uid\x18\x02 \x01(\tR\x03uid\"\\\n" +
+	"\x04text\x18\x01 \x01(\tR\x04text\x12#\n" +
+	"\rrequester_uid\x18\x02 \x01(\tR\frequesterUid\x12,\n" +
+	"\blanguage\x18\x03 \x01(\x0e2\x10.lexora.LanguageR\blanguage\"\\\n" +
 	"&AnalyzeTextAndAddToSuggestionsResponse\x12\x17\n" +
 	"\ajob_uid\x18\x01 \x01(\tR\x06jobUid\x12\x19\n" +
 	"\buser_uid\x18\x02 \x01(\tR\auserUid\"m\n" +
@@ -266,15 +277,17 @@ var file_lexora_analysis_messages_proto_goTypes = []any{
 	(*AnalyzeTextAndAddToSuggestionsResponse)(nil), // 1: lexora.AnalyzeTextAndAddToSuggestionsResponse
 	(*ApproveSuggestionRequest)(nil),               // 2: lexora.ApproveSuggestionRequest
 	(*ApproveSuggestionResponse)(nil),              // 3: lexora.ApproveSuggestionResponse
-	(*shared.Word)(nil),                            // 4: lexora.Word
+	(shared.Language)(0),                           // 4: lexora.Language
+	(*shared.Word)(nil),                            // 5: lexora.Word
 }
 var file_lexora_analysis_messages_proto_depIdxs = []int32{
-	4, // 0: lexora.ApproveSuggestionResponse.word:type_name -> lexora.Word
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	4, // 0: lexora.AnalyzeTextAndAddToSuggestionsRequest.language:type_name -> lexora.Language
+	5, // 1: lexora.ApproveSuggestionResponse.word:type_name -> lexora.Word
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_lexora_analysis_messages_proto_init() }

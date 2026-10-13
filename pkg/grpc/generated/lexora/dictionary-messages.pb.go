@@ -1859,8 +1859,20 @@ func (x *ListAllLinkedSymbolsResponse) GetTotalCount() int32 {
 	return 0
 }
 
+// A word found by the text analyser that is not in the dictionary yet.
 type WordSuggestion struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uid           string                 `protobuf:"bytes,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Word          string                 `protobuf:"bytes,2,opt,name=word,proto3" json:"word,omitempty"` // the form as it appeared in the text
+	Lemma         string                 `protobuf:"bytes,3,opt,name=lemma,proto3" json:"lemma,omitempty"`
+	Language      shared.Language        `protobuf:"varint,4,opt,name=language,proto3,enum=lexora.Language" json:"language,omitempty"`
+	SymbolType    shared.SymbolType      `protobuf:"varint,5,opt,name=symbol_type,json=symbolType,proto3,enum=lexora.SymbolType" json:"symbol_type,omitempty"`
+	WordType      shared.WordType        `protobuf:"varint,6,opt,name=word_type,json=wordType,proto3,enum=lexora.WordType" json:"word_type,omitempty"`
+	Attributes    *shared.WordAttributes `protobuf:"bytes,7,opt,name=attributes,proto3" json:"attributes,omitempty"`
+	JobUid        string                 `protobuf:"bytes,8,opt,name=job_uid,json=jobUid,proto3" json:"job_uid,omitempty"`
+	RequesterUid  string                 `protobuf:"bytes,9,opt,name=requester_uid,json=requesterUid,proto3" json:"requester_uid,omitempty"`
+	Approved      bool                   `protobuf:"varint,10,opt,name=approved,proto3" json:"approved,omitempty"`
+	ApprovedBy    string                 `protobuf:"bytes,11,opt,name=approved_by,json=approvedBy,proto3" json:"approved_by,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1895,8 +1907,86 @@ func (*WordSuggestion) Descriptor() ([]byte, []int) {
 	return file_lexora_dictionary_messages_proto_rawDescGZIP(), []int{33}
 }
 
+func (x *WordSuggestion) GetUid() string {
+	if x != nil {
+		return x.Uid
+	}
+	return ""
+}
+
+func (x *WordSuggestion) GetWord() string {
+	if x != nil {
+		return x.Word
+	}
+	return ""
+}
+
+func (x *WordSuggestion) GetLemma() string {
+	if x != nil {
+		return x.Lemma
+	}
+	return ""
+}
+
+func (x *WordSuggestion) GetLanguage() shared.Language {
+	if x != nil {
+		return x.Language
+	}
+	return shared.Language(0)
+}
+
+func (x *WordSuggestion) GetSymbolType() shared.SymbolType {
+	if x != nil {
+		return x.SymbolType
+	}
+	return shared.SymbolType(0)
+}
+
+func (x *WordSuggestion) GetWordType() shared.WordType {
+	if x != nil {
+		return x.WordType
+	}
+	return shared.WordType(0)
+}
+
+func (x *WordSuggestion) GetAttributes() *shared.WordAttributes {
+	if x != nil {
+		return x.Attributes
+	}
+	return nil
+}
+
+func (x *WordSuggestion) GetJobUid() string {
+	if x != nil {
+		return x.JobUid
+	}
+	return ""
+}
+
+func (x *WordSuggestion) GetRequesterUid() string {
+	if x != nil {
+		return x.RequesterUid
+	}
+	return ""
+}
+
+func (x *WordSuggestion) GetApproved() bool {
+	if x != nil {
+		return x.Approved
+	}
+	return false
+}
+
+func (x *WordSuggestion) GetApprovedBy() string {
+	if x != nil {
+		return x.ApprovedBy
+	}
+	return ""
+}
+
 type CreateWordSuggestionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Suggestion    *WordSuggestion        `protobuf:"bytes,1,opt,name=suggestion,proto3" json:"suggestion,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1931,8 +2021,17 @@ func (*CreateWordSuggestionRequest) Descriptor() ([]byte, []int) {
 	return file_lexora_dictionary_messages_proto_rawDescGZIP(), []int{34}
 }
 
+func (x *CreateWordSuggestionRequest) GetSuggestion() *WordSuggestion {
+	if x != nil {
+		return x.Suggestion
+	}
+	return nil
+}
+
 type ListAllWordSuggestionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1967,8 +2066,24 @@ func (*ListAllWordSuggestionRequest) Descriptor() ([]byte, []int) {
 	return file_lexora_dictionary_messages_proto_rawDescGZIP(), []int{35}
 }
 
+func (x *ListAllWordSuggestionRequest) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ListAllWordSuggestionRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
 type ListAllWordSuggestionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Suggestions   []*WordSuggestion      `protobuf:"bytes,1,rep,name=suggestions,proto3" json:"suggestions,omitempty"`
+	TotalCount    int32                  `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2001,6 +2116,20 @@ func (x *ListAllWordSuggestionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ListAllWordSuggestionResponse.ProtoReflect.Descriptor instead.
 func (*ListAllWordSuggestionResponse) Descriptor() ([]byte, []int) {
 	return file_lexora_dictionary_messages_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *ListAllWordSuggestionResponse) GetSuggestions() []*WordSuggestion {
+	if x != nil {
+		return x.Suggestions
+	}
+	return nil
+}
+
+func (x *ListAllWordSuggestionResponse) GetTotalCount() int32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
 }
 
 type UpdateWordSuggestionRequest struct {
@@ -2209,11 +2338,35 @@ const file_lexora_dictionary_messages_proto_rawDesc = "" +
 	"\x1cListAllLinkedSymbolsResponse\x12!\n" +
 	"\fsymbols_uids\x18\x01 \x03(\tR\vsymbolsUids\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x05R\n" +
-	"totalCount\"\x10\n" +
-	"\x0eWordSuggestion\"\x1d\n" +
-	"\x1bCreateWordSuggestionRequest\"\x1e\n" +
-	"\x1cListAllWordSuggestionRequest\"\x1f\n" +
-	"\x1dListAllWordSuggestionResponse\"\x1d\n" +
+	"totalCount\"\x91\x03\n" +
+	"\x0eWordSuggestion\x12\x10\n" +
+	"\x03uid\x18\x01 \x01(\tR\x03uid\x12\x12\n" +
+	"\x04word\x18\x02 \x01(\tR\x04word\x12\x14\n" +
+	"\x05lemma\x18\x03 \x01(\tR\x05lemma\x12,\n" +
+	"\blanguage\x18\x04 \x01(\x0e2\x10.lexora.LanguageR\blanguage\x123\n" +
+	"\vsymbol_type\x18\x05 \x01(\x0e2\x12.lexora.SymbolTypeR\n" +
+	"symbolType\x12-\n" +
+	"\tword_type\x18\x06 \x01(\x0e2\x10.lexora.WordTypeR\bwordType\x126\n" +
+	"\n" +
+	"attributes\x18\a \x01(\v2\x16.lexora.WordAttributesR\n" +
+	"attributes\x12\x17\n" +
+	"\ajob_uid\x18\b \x01(\tR\x06jobUid\x12#\n" +
+	"\rrequester_uid\x18\t \x01(\tR\frequesterUid\x12\x1a\n" +
+	"\bapproved\x18\n" +
+	" \x01(\bR\bapproved\x12\x1f\n" +
+	"\vapproved_by\x18\v \x01(\tR\n" +
+	"approvedBy\"U\n" +
+	"\x1bCreateWordSuggestionRequest\x126\n" +
+	"\n" +
+	"suggestion\x18\x01 \x01(\v2\x16.lexora.WordSuggestionR\n" +
+	"suggestion\"O\n" +
+	"\x1cListAllWordSuggestionRequest\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\"z\n" +
+	"\x1dListAllWordSuggestionResponse\x128\n" +
+	"\vsuggestions\x18\x01 \x03(\v2\x16.lexora.WordSuggestionR\vsuggestions\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\x05R\n" +
+	"totalCount\"\x1d\n" +
 	"\x1bUpdateWordSuggestionRequest\"\x1d\n" +
 	"\x1bDeleteWordSuggestionRequest*r\n" +
 	"\n" +
@@ -2315,11 +2468,17 @@ var file_lexora_dictionary_messages_proto_depIdxs = []int32{
 	42, // 18: lexora.UpdateSymbolRequest.symbol:type_name -> lexora.Symbol
 	44, // 19: lexora.UpdateWordRequest.word:type_name -> lexora.Word
 	53, // 20: lexora.UpdateWordAttributesRequest.attributes:type_name -> lexora.WordAttributes
-	21, // [21:21] is the sub-list for method output_type
-	21, // [21:21] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	41, // 21: lexora.WordSuggestion.language:type_name -> lexora.Language
+	43, // 22: lexora.WordSuggestion.symbol_type:type_name -> lexora.SymbolType
+	45, // 23: lexora.WordSuggestion.word_type:type_name -> lexora.WordType
+	53, // 24: lexora.WordSuggestion.attributes:type_name -> lexora.WordAttributes
+	34, // 25: lexora.CreateWordSuggestionRequest.suggestion:type_name -> lexora.WordSuggestion
+	34, // 26: lexora.ListAllWordSuggestionResponse.suggestions:type_name -> lexora.WordSuggestion
+	27, // [27:27] is the sub-list for method output_type
+	27, // [27:27] is the sub-list for method input_type
+	27, // [27:27] is the sub-list for extension type_name
+	27, // [27:27] is the sub-list for extension extendee
+	0,  // [0:27] is the sub-list for field type_name
 }
 
 func init() { file_lexora_dictionary_messages_proto_init() }
